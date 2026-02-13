@@ -2,6 +2,6 @@
 '''STRING'''
 
 
-def sum_list(input_list: list) -> float:
+def sum_list(input_list: list[float]) -> float:
     '''sum list'''
     return sum(input_list)
