@@ -6,10 +6,9 @@ import typing
 
 
 def element_length(lst: typing.Iterable[typing.Sequence]) \
--> typing.List[typing.Tuple[typing.Sequence, int]]:
+        -> typing.List[typing.Tuple[typing.Sequence, int]]:
     '''
     Docstring for element_length
-    
     :param lst: Description
     :type lst: typing.Iterable[typing.Sequence]
     :return: Description
