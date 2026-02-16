@@ -4,8 +4,12 @@
 
 import asyncio
 import random
+import time
 
 
 async def wait_random(max_delay: int = 10) -> float:
     '''Coroutine'''
-    return await random.uniform(0, max_delay)
+    start = time.perf_counter()
+    await asyncio.sleep(random.uniform(0, max_delay))
+    elapsed = time.perf_counter() - start
+    return elapsed
