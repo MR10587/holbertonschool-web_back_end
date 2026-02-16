@@ -6,5 +6,5 @@ import asyncio
 import random
 
 
-async def wait_random(delay = 10):
+async def wait_random(delay: int = 10) -> float:
     return random.uniform(0, delay)
