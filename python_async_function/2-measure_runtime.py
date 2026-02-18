@@ -10,6 +10,6 @@ import time
 async def measure_time(n: int, max_delay: int) -> float:
     '''Return runtime of function'''
     start = time.perf_counter()
-    await wait_n(n, max_delay)
+    await asyncio.run(wait_n(n, max_delay))
     elapsed = time.perf_counter() - start
     return elapsed / n
