@@ -9,7 +9,16 @@ import typing
 
 async def wait_n(n: int, max_delay: int) -> typing.List[float]:
     '''DEF'''
-    delays = []
-    for i in range(0, n):
-        delays.append(await wait_random(max_delay))
-    return delays
+    tasks = [wait_random(max_delay) for i in range(n)]
+    delays = await asyncio.gather(*tasks)
+    result = []
+    for delay in delays:
+        inserted = False
+        for j in range(len(result)):
+            if delay < result[j]:
+                result.insert(j, delay)
+                inserted = True
+                break
+        if not inserted:
+            result.append(delay)
+    return result
