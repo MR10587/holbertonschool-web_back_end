@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-'''ASYNC'''
+'''ASYNC concurrent coroutines'''
 
 
 from basic_async_syntax import wait_random
@@ -8,7 +8,7 @@ import typing
 
 
 async def wait_n(n: int, max_delay: int) -> typing.List[float]:
-    '''DEF'''
+    '''DEF wait_n'''
     tasks = [wait_random(max_delay) for i in range(n)]
     delays = await asyncio.gather(*tasks)
     result = []
