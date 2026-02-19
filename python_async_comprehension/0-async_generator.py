@@ -4,9 +4,11 @@
 
 import asyncio
 import random
+import typing
 
 
-async def async_generator():
+async def async_generator() -> typing.Generator[int]:
+    '''Loop for yield'''
     for i in range(10):
         await asyncio.sleep(1)
         yield(random.randint(0, 10))
