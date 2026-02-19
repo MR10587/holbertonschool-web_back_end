@@ -7,7 +7,7 @@ import random
 import typing
 
 
-async def async_generator() -> typing.Generator[int]:
+async def async_generator() -> typing.Generator[int, None, None]:
     '''Loop for yield'''
     for i in range(10):
         await asyncio.sleep(1)
