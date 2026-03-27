@@ -9,4 +9,4 @@ app = Flask()
 @app.route("/")
 def index():
     '''INDEX PAGE'''
-    return render_template("0-index.html")
+    return(render_template('0-index.html'))
