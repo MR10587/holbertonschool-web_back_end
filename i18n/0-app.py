@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 '''Basic Flask App'''
-from flask import flask, render_template
-
+from flask import Flask, render_template
 
 
 app = Flask()
@@ -9,4 +8,4 @@ app = Flask()
 @app.route("/")
 def index():
     '''INDEX PAGE'''
-    return(render_template('0-index.html'))
+    return render_template("0-index.html")
