@@ -63,6 +63,7 @@ class Cache:
         return self.get(key, int)
 
 def replay(method: Callable):
+    '''Function to show input and outputs'''
     key = method.__qualname__
     r = method.__self__._redis
     inputs = r.lrange(key + ":inputs", 0, -1)
