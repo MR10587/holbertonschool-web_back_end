@@ -12,7 +12,7 @@ def count_calls(method: Callable) -> Callable:
     def wrapper(self, *args, **kwargs):
         key = method.__qualname__
         self._redis.incr(key)
-        return method(self, *args, *kwargs)
+        return method(self, *args, **kwargs)
     return wrapper
 
 def call_history(method: Callable) -> Callable:
@@ -65,8 +65,8 @@ class Cache:
 def replay(method: Callable):
     key = method.__qualname__
     r = method.__self__._redis
-    inputs = r.lrange(key + "inputs", 0, -1)
-    outputs = r.lrange(key + "outputs", 0, -1)
+    inputs = r.lrange(key + ":inputs", 0, -1)
+    outputs = r.lrange(key + ":outputs", 0, -1)
     count = len(inputs)
     print(f"{key} was called {count} times:")
     for input, output in zip(inputs, outputs):
