@@ -13,5 +13,3 @@ def get_page(url: str) -> str:
     r.set(f"count:{url}", count, ex=10)
     resp = requests.get(url)
     return resp
-
-print(get_page("https://httpbin.org/delay/3"))
