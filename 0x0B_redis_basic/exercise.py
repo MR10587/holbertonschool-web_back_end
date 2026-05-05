@@ -70,4 +70,4 @@ def replay(method: Callable):
     count = len(inputs)
     print(f"{key} was called {count} times:")
     for input, output in zip(inputs, outputs):
-        print(f"key({input.decode()}) -> {output.decode()}")
+        print(f"{key}({input.decode()}) -> {output.decode()}")
