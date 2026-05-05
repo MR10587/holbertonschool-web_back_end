@@ -10,7 +10,7 @@ count = 0
 
 def get_page(url: str) -> str:
     count += 1
-    r.set("count:{url}", count, ex=10)
+    r.set(f"count:{url}", count, ex=10)
     resp = requests.get(url)
     return resp
 
