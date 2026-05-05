@@ -8,9 +8,9 @@ r = redis.Redis()
 
 
 def get_page(url: str) -> str:
-    '''Get Page and return its content while caching its value for 10 seconds'''
+    '''Get Page and return its content while caching its value'''
     r.incr(f"count:{url}")
-    cache = r.get(url) 
+    cache = r.get(url)
     if cache:
         return cache.decode("utf-8")
     resp = requests.get(url)
