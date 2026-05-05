@@ -49,7 +49,7 @@ class Cache:
         '''Get type'''
         value = self._redis.get(key)
         if value is None:
-           return value
+            return value
         if fn:
             return fn(value)
         return value
