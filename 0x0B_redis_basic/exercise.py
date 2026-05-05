@@ -67,7 +67,7 @@ def replay(method: Callable):
     r = method.__self__._redis
     inputs = r.lrange(key + "inputs", 0, -1)
     outputs = r.lrange(key + "outputs", 0, -1)
-    count = r.llen(inputs)
+    count = len(inputs)
     print(f"{key} was called {count} times:")
     for input, output in zip(inputs, outputs):
         print(f"{input.decode()} -> {output.decode()}")
