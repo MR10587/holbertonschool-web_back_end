@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 '''Getting web page via get_page function'''
 import requests
-from redis import Redis
+import redis
 
 
-r = Redis()
+r = redis.Redis()
 
 
 def get_page(url: str) -> str:
