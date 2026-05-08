@@ -1,5 +1,5 @@
 // Insert document into school
-db.school.insertone(
+db.school.insertOne(
     {
         name: "Holberton school"
     }
