@@ -4,6 +4,7 @@ from pymongo import MongoClient
 
 
 def list_all(mongo_collection):
+    '''Function to list documents'''
     documents = list(mongo_collection.find())
     if documents:
         return documents
