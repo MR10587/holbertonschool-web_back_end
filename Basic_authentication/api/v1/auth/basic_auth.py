@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """This is documentation for the file"""
-from Session_authentication.models import user
+from typing import TypeVar
+from models.user import User
 from api.v1.auth.auth import Auth
 
 
 class BasicAuth(Auth):
     """This is basic auth documented class baby"""
+
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
         """This is a method we use for takuing the code"""
@@ -43,11 +45,11 @@ class BasicAuth(Auth):
             return a, b
         if ':' not in decoded_base64_authorization_header:
             return a, b
-        a, b = decoded_base64_authorization_header.split(':')
+        a, b = decoded_base64_authorization_header.split(':', 1)
         return a, b
 
     def user_object_from_credentials(
-        self, user_email: str, user_pwd: str) -> TypeVar('User'):
+            self, user_email: str, user_pwd: str) -> TypeVar('User'):
         """Returns the User instance based on email and password."""
         if user_email is None or not isinstance(user_email, str):
             return None
@@ -55,15 +57,15 @@ class BasicAuth(Auth):
             return None
 
         try:
-            users = user.User.search({"email": user_email})
+            users = User.search({"email": user_email})
         except Exception:
             return None
 
         if not users or len(users) == 0:
             return None
 
-        user = users[0]
-        if not user.is_valid_password(user_pwd):
+        found_user = users[0]
+        if not found_user.is_valid_password(user_pwd):
             return None
 
-        return user
+        return found_user
