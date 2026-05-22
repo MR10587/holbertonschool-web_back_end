@@ -27,7 +27,8 @@ def _hash_password(password: str) -> bytes:
     digest = hashlib.pbkdf2_hmac(
         "sha256", password.encode("utf-8"), salt, 100_000
     )
-    return b"pbkdf2_sha256$" + salt.hex().encode("utf-8") + b"$" + digest.hex().encode("utf-8")
+    encoded_hash = b"pbkdf2_sha256$" + salt.hex().encode("utf-8") + b"$"
+    return encoded_hash + hmac.digest(digest, salt).hex().encode("utf-8")
 
 
 def _is_valid_password(password: str, hashed_password: bytes) -> bool:
