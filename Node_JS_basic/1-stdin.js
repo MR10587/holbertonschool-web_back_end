@@ -7,10 +7,8 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
-rl.on('line', (input) => {
-    console.log(`Your name is: ${input}`);
-});
-
-rl.on('close', () => {
+rl.question('', (name) => {
+    console.log(`Your name is $(name)`);
     console.log('This important software is now closing');
+    r1.close();
 });
