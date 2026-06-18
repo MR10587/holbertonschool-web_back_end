@@ -13,13 +13,12 @@ function countStudents(path) {
     .split('\n')
     .filter((line) => line.trim() !== '');
 
-  // header çıxırıq
   const students = lines.slice(1);
 
   const fields = {};
 
   for (const line of students) {
-    const [firstname, lastname, age, field] = line.split(',');
+    const [firstname, , , field] = line.split(',');
 
     if (!fields[field]) {
       fields[field] = [];
@@ -28,13 +27,11 @@ function countStudents(path) {
     fields[field].push(firstname);
   }
 
-  const totalStudents = students.length;
-
-  console.log(`Number of students: ${totalStudents}`);
+  console.log(`Number of students: ${students.length}`);
 
   for (const [field, list] of Object.entries(fields)) {
     console.log(
-      `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`
+      `Number of students in ${field}: ${list.length}. List: ${list.join(', ')}`,
     );
   }
 }
