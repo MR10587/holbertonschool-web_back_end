@@ -1,17 +1,17 @@
 const fs = require('node:fs');
 
 
-function countStudents (path) {
+function countStudents(path) {
     let data;
 
     try {
-        data = fs.readLineSync(path, 'utf-8');
+        data = fs.readFileSync(path, 'utf-8');
     } catch (err) {
         throw new Error('Cannot load the database');
     }
 
     const lines = data
-        .split('/n')
+        .split('\n')
         .filter(line => line.trim() !== '');
     
     const numberOfStudents = lines.length - 1;
