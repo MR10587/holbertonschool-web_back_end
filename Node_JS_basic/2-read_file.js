@@ -18,3 +18,5 @@ function countStudents (path) {
 
     console.log(`Number of students: ${numberOfStudents}`);
 }
+
+module.exports = countStudents;
