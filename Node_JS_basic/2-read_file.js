@@ -17,4 +17,4 @@ function countStudents (path) {
     const numberOfStudents = lines.length - 1;
 
     console.log(`Number of students: ${numberOfStudents}`);
-};
+}
