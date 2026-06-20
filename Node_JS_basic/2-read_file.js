@@ -1,4 +1,4 @@
-const fs = require('node:fs');
+const fs = require('node:fs/promises');
 
 function countStudents(path) {
   let data;
@@ -13,7 +13,6 @@ function countStudents(path) {
     .split('\n')
     .filter((line) => line.trim() !== '');
 
-  // header çıxırıq
   const students = lines.slice(1);
 
   const fields = {};
