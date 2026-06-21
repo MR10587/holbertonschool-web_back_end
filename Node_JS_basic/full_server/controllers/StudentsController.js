@@ -7,7 +7,11 @@ class StudentsController {
 
       let output = 'This is the list of our students';
 
-      const sortedFields = Object.keys(data).sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+      const sortedFields = Object
+        .keys(data)
+        .sort((a, b) =>
+            a.toLowerCase().localeCompare(b.toLowerCase())
+        );
 
       for (const field of sortedFields) {
         const list = data[field];
