@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('node:fs/promises');
 
 const app = express();
 const port = 1245;
@@ -57,5 +58,7 @@ app.get('/students', async (req, res) => {
       );
   }
 });
+
+app.listen(port);
 
 module.exports = app;
