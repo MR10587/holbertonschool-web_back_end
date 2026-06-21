@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', (req, res) => {
+app.get('/students', async (req, res) => {
   try {
     const studentsInfo = await countStudents(database);
 
