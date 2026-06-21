@@ -50,12 +50,12 @@ app.get('/students', async (req, res) => {
     const studentsInfo = await countStudents(database);
 
     res.send(
-        `This is the list of our students\n${studentsInfo}`
+      `This is the list of our students\n${studentsInfo}`,
     );
   } catch (err) {
     res.send(
-        'This is the list of our students\nCannot load the database',
-      );
+      'This is the list of our students\nCannot load the database',
+    );
   }
 });
 
