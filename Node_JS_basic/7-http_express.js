@@ -57,3 +57,5 @@ app.get('/students', async (req, res) => {
       );
   }
 });
+
+module.exports = app;
