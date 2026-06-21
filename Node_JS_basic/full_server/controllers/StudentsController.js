@@ -9,9 +9,7 @@ class StudentsController {
 
       const sortedFields = Object
         .keys(data)
-        .sort((a, b) =>
-            a.toLowerCase().localeCompare(b.toLowerCase())
-        );
+        .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 
       for (const field of sortedFields) {
         const list = data[field];
