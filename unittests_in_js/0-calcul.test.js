@@ -26,8 +26,8 @@ describe('calculateNumber', () => {
     assert.strictEqual(calculateNumber(-1, -1), -2);
   });
 
-  it("should return -1 when adding -1.2 and -1.7", () => {
-    assert.strictEqual(calculateNumber(-1.2, -1.7), -1);
+  it("should return -3 when adding -1.2 and -1.7", () => {
+    assert.strictEqual(calculateNumber(-1.2, -1.7), -3);
   });
 
   it("should return -3 when adding -1.5 and -1.7", () => {
