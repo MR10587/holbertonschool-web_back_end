@@ -14,7 +14,7 @@ describe('calculateNumber', () => {
     assert.strictEqual(calculateNumber('DIVIDE', 1.4, 4.5), 0.2);
   });
 
-  it("should return 'Error' when adding 1.4 and 0", () => {
-    assert.strictEqual(calculateNumber('SUM', 1.4, 0), 'Error');
+  it("should return 'Error' when dividing 1.4 and 0", () => {
+    assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
   });
 });
