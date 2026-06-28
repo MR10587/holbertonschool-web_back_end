@@ -10,9 +10,9 @@ describe('sendPaymentRequestToApi', () => {
   });
 
   it('should log the correct message', () => {
-    const calculateStub = sinon
-      .stub(Utils, 'calculateNumber')
-      .returns(10);
+    const calculateStub = sinon.stub(
+        Utils, 'calculateNumber'
+    ).returns(10);
 
     const logSpy = sinon.spy(console, 'log');
 
