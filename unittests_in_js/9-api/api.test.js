@@ -1,46 +1,41 @@
-const app = require("./api");
+const request = require("request");
 const { expect } = require("chai");
-const request = require("supertest");
 
-describe("Route test for index page", () => {
-  it("returns correct status code", (done) => {
-    request(app)
-      .get("/")
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.statusCode).to.equal(200);
-        done();
-      });
+describe("API integration tests", () => {
+  const URL = "http://localhost:7865";
+
+  it("Correct status code?", (done) => {
+    request(URL, (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
   });
 
-  it("returns correct response body", (done) => {
-    request(app)
-      .get("/")
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.text).to.equal("Welcome to the payment system");
-        done();
-      });
+  it("Correct result?", (done) => {
+    request(URL, (error, response, body) => {
+      expect(body).to.equal("Welcome to the payment system");
+      done();
+    });
   });
 
-  it("returns correct status code for number id", (done) => {
-    request(app)
-      .get("/card/1")
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.statusCode).to.equal(200);
-        expect(res.text).to.equal("Payment methods for card 1");
-        done();
-      });
+  it("Correct status code for /cart/:id with valid id?", (done) => {
+    request(`${URL}/cart/123`, (error, response, body) => {
+      expect(response.statusCode).to.equal(200);
+      done();
+    });
   });
 
-  it("returns correct status code for non-number id", (done) => {
-    request(app)
-      .get("/card/abc")
-      .end((err, res) => {
-        if (err) return done(err);
-        expect(res.statusCode).to.equal(404);
-        done();
-      });
+  it("Correct result for /cart/:id with valid id?", (done) => {
+    request(`${URL}/cart/123`, (error, response, body) => {
+      expect(body).to.equal("Payment methods for cart 123");
+      done();
+    });
+  });
+
+  it("Correct status code for /cart/:id with invalid id?", (done) => {
+    request(`${URL}/cart/abc`, (error, response, body) => {
+      expect(response.statusCode).to.equal(404);
+      done();
+    });
   });
 });
