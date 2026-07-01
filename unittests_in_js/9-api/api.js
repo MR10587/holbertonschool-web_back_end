@@ -15,7 +15,7 @@ app.get("/card/:id", (req, res) => {
   } else {
     res.sendStatus(404);
   }
-})
+});
 
 if (require.main === module) {
   app.listen(port, () => {

@@ -24,12 +24,12 @@ describe("Route test for index page", () => {
       expect(res.statusCode).to.equal(200);
 
       done();
-    })
-  })
+    });
+  });
 
   it("returns correct status code for non-number id", (err, res, body) => {
     expect(res.statusCode).to.equal(404);
 
     done();
-  })
+  });
 });
