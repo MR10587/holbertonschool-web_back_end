@@ -7,14 +7,10 @@ app.get("/", (req, res) => {
   res.send("Welcome to the payment system");
 });
 
-app.get("/card/:id", (req, res) => {
-  let id = Number(req.params.id);
+app.get("/card/:id(\\d+)", (req, res) => {
+  const id = req.params.id;
 
-  if(Number.isInteger(id)) {
-    res.send(`Payment methods for card ${id}`);
-  } else {
-    res.sendStatus(404);
-  }
+  res.send(`Payment methods for card ${id}`);
 });
 
 if (require.main === module) {
