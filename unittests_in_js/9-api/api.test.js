@@ -1,35 +1,46 @@
 const app = require("./api");
 const { expect } = require("chai");
-const request = require("request");
+const request = require("supertest"); // Changed to supertest
 
 describe("Route test for index page", () => {
   it("returns correct status code", (done) => {
-    request("http://localhost:7865", (err, res, body) => {
-      expect(res.statusCode).to.equal(200);
-
-      done();
-    });
+    request(app)
+      .get("/")
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.statusCode).to.equal(200);
+        done();
+      });
   });
 
   it("returns correct response body", (done) => {
-    request("http://localhost:7865", (err, res, body) => {
-      expect(body).to.equal("Welcome to the payment system");
-
-      done();
-    });
+    request(app)
+      .get("/")
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.text).to.equal("Welcome to the payment system"); // res.text holds the body string
+        done();
+      });
   });
 
   it("returns correct status code for number id", (done) => {
-    request("http://localhost:7865/card/1", (err, res, body) => {
-      expect(res.statusCode).to.equal(200);
-
-      done();
-    });
+    request(app)
+      .get("/card/1")
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.statusCode).to.equal(200);
+        expect(res.text).to.equal("Payment methods for card 1");
+        done();
+      });
   });
 
-  it("returns correct status code for non-number id", (err, res, body) => {
-    expect(res.statusCode).to.equal(404);
-
-    done();
+  it("returns correct status code for non-number id", (done) => {
+    request(app)
+      .get("/card/abc") // Added missing request call
+      .end((err, res) => {
+        if (err) return done(err);
+        expect(res.statusCode).to.equal(404);
+        done();
+      });
   });
 });
