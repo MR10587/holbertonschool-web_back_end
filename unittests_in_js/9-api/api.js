@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 app.get("/card/:id", (req, res) => {
   let id = Number(req.params.id);
 
-  if (Number.isInteger(id)) {
+  if(Number.isInteger(id)) {
     res.send(`Payment methods for card ${id}`);
   } else {
     res.sendStatus(404);
