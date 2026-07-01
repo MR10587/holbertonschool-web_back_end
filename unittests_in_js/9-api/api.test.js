@@ -1,6 +1,6 @@
 const app = require("./api");
 const { expect } = require("chai");
-const request = require("supertest"); // Changed to supertest
+const request = require("supertest");
 
 describe("Route test for index page", () => {
   it("returns correct status code", (done) => {
@@ -18,7 +18,7 @@ describe("Route test for index page", () => {
       .get("/")
       .end((err, res) => {
         if (err) return done(err);
-        expect(res.text).to.equal("Welcome to the payment system"); // res.text holds the body string
+        expect(res.text).to.equal("Welcome to the payment system");
         done();
       });
   });
@@ -36,7 +36,7 @@ describe("Route test for index page", () => {
 
   it("returns correct status code for non-number id", (done) => {
     request(app)
-      .get("/card/abc") // Added missing request call
+      .get("/card/abc")
       .end((err, res) => {
         if (err) return done(err);
         expect(res.statusCode).to.equal(404);
